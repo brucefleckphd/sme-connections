@@ -1,0 +1,22 @@
+# Source-derived physician data and all local evidence stay off GitHub.
+/data/
+/verification/
+/source/
+*.xlsx
+*.xls
+*.csv
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.pdf
+*.zip
+*.tar
+*.gz
+*.bak
+.env
+.env.*
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store

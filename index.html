@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' file:; script-src 'self' file:; style-src 'self' file: 'unsafe-inline'; img-src 'self' file: data:; connect-src 'none'; object-src 'none'; base-uri 'none'">
+<title>SME Connections | Network-first alternative</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header>
+  <div class="brandmark" aria-hidden="true">C</div>
+  <div><div class="pre">Cook Medical · Vascular Clinical Programs</div><h1>SME Connections</h1></div>
+  <div class="header-context">A connected view of physician expertise</div>
+  <label class="synth-toggle"><input type="checkbox" id="showSynth" checked> Synthetic trials <span id="synthState">ON</span></label>
+  <div class="ver">Network-first alternative <span id="dataStamp"></span></div>
+</header>
+<div class="banner">Internal. Contains personal data and SYNTHETIC demo fields. Do not distribute.</div>
+<main>
+  <aside id="left" aria-label="Explore and filter">
+    <section class="block">
+      <h3>Find a connection</h3>
+      <div id="searchwrap"><input id="q" type="search" aria-label="Search physicians, institutions, studies, or topics" placeholder="Search the network" autocomplete="off"><div id="results"></div></div>
+      <div class="hint">Physicians, institutions, studies, areas, topics</div>
+    </section>
+    <section class="block">
+      <h3>Explore</h3>
+      <button id="overview" class="primary">◎ Network overview</button>
+      <label class="f">Overview relationship layer <select id="layer"><option value="combined">Recorded + synthetic</option><option value="studies">Cook studies</option><option value="institutions">Institutions</option><option value="competitor">Synthetic trials</option></select></label>
+    </section>
+    <section class="block">
+      <div class="section-head"><h3>Filter physicians</h3><button id="clearFilters" class="textbtn">Clear</button></div>
+      <label class="f">Therapeutic area <select id="fTa"></select></label>
+      <label class="f">Region <select id="fRegion"></select></label>
+      <label class="f">Specialty <select id="fSpecialty"></select></label>
+      <label class="f">Advocate status <select id="fAdvocate"><option value="">Any</option><option value="Yes">Cook advocate</option><option value="No">Recorded as not an advocate</option><option value="Unknown">Status not recorded</option></select></label>
+    </section>
+    <section class="block">
+      <h3>Put the network to work</h3>
+      <div class="scenarios">
+        <button class="scn" data-scn="A"><b>A</b><span>Meeting preparation<small>Open a physician briefing</small></span></button>
+        <button class="scn" data-scn="B"><b>B</b><span>Investigator scouting<small>Explore physicians and affiliations</small></span></button>
+        <button class="scn" data-scn="C"><b>C</b><span>Speaker exploration<small>Find records with no Cook activity</small></span></button>
+        <button class="scn" data-scn="D"><b>D</b><span>Advisory candidates<small>Review record depth and breadth</small></span></button>
+      </div>
+    </section>
+    <section class="block"><h3>My network <span id="myCount" class="count"></span></h3><div id="myNet"></div><div id="storageNote" class="hint" hidden>Browser storage is unavailable. Stars last for this session only.</div></section>
+  </aside>
+  <section id="workspace" aria-label="Physician network">
+    <div class="workspace-head"><div><div class="eyebrow">Relationship intelligence</div><h2>Explore the physician network</h2><p>Follow the shared institutions and studies behind each connection.</p></div><button id="resetDemo" class="ghost">Reset view</button></div>
+    <div class="stats" aria-label="Workbook coverage">
+      <div class="stat"><span id="statPhysicians">0</span><small>Physicians in workbook</small></div>
+      <div class="stat"><span id="statInstitutions">0</span><small>Recorded institutions</small></div>
+      <div class="stat"><span id="statStudies">0</span><small>Cook studies</small></div>
+      <div class="stat synth-stat"><span id="statTrials">0</span><small>Fictional trials <span class="syn">SYNTHETIC</span></small></div>
+    </div>
+    <div class="filterbar"><span id="filterStatus" aria-live="polite"></span><span id="modeNote"></span></div>
+    <section id="center">
+      <div class="graph-head"><div><div class="eyebrow">Live network view</div><div id="viewTitle"></div></div><div class="toolbar"><button id="navBack" title="Back" aria-label="Back">←</button><button id="navFwd" title="Forward" aria-label="Forward">→</button><button id="zoomOut" aria-label="Zoom out">−</button><button id="zoomIn" aria-label="Zoom in">+</button><button id="fit">Fit</button></div></div>
+      <div id="net" role="img" aria-label="Interactive relationship graph. Use search and the details panel for keyboard-accessible exploration."></div>
+      <div id="graphEmpty" hidden>No connected records in this view. Clear filters or choose another layer.</div>
+      <div id="loading" role="status">Arranging connections...</div>
+      <div class="graph-footer"><div id="legend"></div><div id="graphMetrics" aria-live="polite"></div></div>
+    </section>
+    <div class="workspace-foot"><span>Shared records show overlap, not proof of a personal relationship.</span><span>Local demo · No server · No external requests</span></div>
+  </section>
+  <aside id="right" aria-label="Network details"><div class="details-label">Explore the evidence</div><div id="panel" aria-live="polite"></div></aside>
+</main>
+<script src="vendor/vis-network.min.js"></script>
+<script src="data/graph.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
